@@ -6,110 +6,52 @@
     <title>Make It Black Sealcoating & Paving LLC</title>
     <style>
       * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
       body {
         margin: 0;
         font-family: Arial, Helvetica, sans-serif;
-        background: linear-gradient(180deg, #050505 0%, #111111 100%);
-        color: white;
+        background: #0a0a0a;
+        color: #fff;
       }
-      .wrap {
-        min-height: 100vh;
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(8, 8, 8, 0.94);
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        backdrop-filter: blur(8px);
+      }
+      .topbar-inner,
+      .container {
+        width: 100%;
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .topbar-inner {
+        min-height: 72px;
         display: flex;
         align-items: center;
-        justify-content: center;
-        padding: 24px;
+        justify-content: space-between;
+        gap: 16px;
       }
-      .card {
-        width: 100%;
-        max-width: 720px;
-        background: #141414;
-        border: 1px solid #2d2d2d;
-        border-radius: 20px;
-        padding: 32px;
-        box-shadow: 0 20px 60px rgba(0,0,0,.35);
-      }
-      .logo {
-        text-align: center;
-        font-size: 44px;
+      .brand {
+        font-size: 26px;
         font-weight: 900;
-        letter-spacing: 1px;
-        margin-bottom: 10px;
+        letter-spacing: 0.5px;
       }
-      .sub {
-        text-align: center;
-        color: #d1d1d1;
-        font-size: 18px;
-        margin-bottom: 30px;
+      .brand small {
+        display: block;
+        font-size: 12px;
+        color: #bdbdbd;
+        font-weight: 700;
+        letter-spacing: 0.3px;
+        margin-top: 3px;
       }
-      .hero {
-        background: linear-gradient(135deg, #1e1e1e, #0d0d0d);
-        border: 1px solid #2a2a2a;
-        border-radius: 18px;
-        padding: 24px;
-        margin-bottom: 24px;
-      }
-      .hero h1 {
-        margin: 0 0 12px 0;
-        font-size: 34px;
-        line-height: 1.1;
-      }
-      .hero p {
-        margin: 0;
-        color: #cfcfcf;
-        line-height: 1.5;
-      }
-      .badges {
+      .top-actions {
         display: flex;
-        flex-wrap: wrap;
         gap: 10px;
-        margin-top: 18px;
-      }
-      .badge {
-        background: #000;
-        border: 1px solid #333;
-        border-radius: 999px;
-        padding: 10px 14px;
-        font-size: 14px;
-      }
-      .grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 14px;
-      }
-      .field {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-      .field.full {
-        grid-column: 1 / -1;
-      }
-      label {
-        font-size: 14px;
-        color: #d6d6d6;
-      }
-      input, textarea {
-        width: 100%;
-        border: 1px solid #353535;
-        background: #0b0b0b;
-        color: white;
-        border-radius: 12px;
-        padding: 14px 16px;
-        font-size: 16px;
-        outline: none;
-      }
-      textarea {
-        min-height: 120px;
-        resize: vertical;
-      }
-      input:focus, textarea:focus {
-        border-color: #6b7280;
-      }
-      .actions {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-        margin-top: 18px;
+        flex-wrap: wrap;
       }
       .btn {
         display: inline-flex;
@@ -119,43 +61,143 @@
         border: none;
         cursor: pointer;
         border-radius: 14px;
-        padding: 16px 18px;
-        font-size: 17px;
+        padding: 14px 18px;
+        font-size: 15px;
         font-weight: 800;
+        transition: transform .15s ease, opacity .15s ease;
       }
-      .btn-dark {
-        background: white;
-        color: black;
+      .btn:hover { transform: translateY(-1px); opacity: 0.96; }
+      .btn-light { background: #fff; color: #000; }
+      .btn-green { background: #16a34a; color: #fff; }
+      .btn-dark { background: #111; color: #fff; border: 1px solid #2a2a2a; }
+
+      .hero {
+        position: relative;
+        min-height: 92vh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
       }
-      .btn-call {
-        background: #16a34a;
-        color: white;
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(0,0,0,0.58), rgba(0,0,0,0.72)),
+          url('/mnt/data/seal.jpg'),
+          url('/mnt/data/seal2.jpg'),
+          url('/mnt/data/seal3.jpg');
+        background-size: cover, 34% 100%, 33% 100%, 33% 100%;
+        background-position: center, left center, center center, right center;
+        background-repeat: no-repeat;
+        filter: saturate(0.95);
       }
-      .footer {
-        text-align: center;
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+      }
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.2fr .8fr;
+        gap: 32px;
+        align-items: center;
+      }
+      .eyebrow {
+        display: inline-block;
+        margin-bottom: 14px;
+        padding: 8px 12px;
+        border: 1px solid rgba(255,255,255,0.18);
+        border-radius: 999px;
+        color: #ebebeb;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.4px;
+        background: rgba(0,0,0,0.28);
+      }
+      .hero h1 {
+        margin: 0 0 14px;
+        font-size: 56px;
+        line-height: 1.02;
+        max-width: 760px;
+      }
+      .hero p {
+        margin: 0;
+        color: #ededed;
+        font-size: 18px;
+        line-height: 1.75;
+        max-width: 680px;
+      }
+      .hero-actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
         margin-top: 24px;
-        color: #9ca3af;
-        font-size: 14px;
-        line-height: 1.6;
       }
-      .quote-box {
+      .services-strip {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
         margin-top: 24px;
-        padding: 18px;
-        border-radius: 16px;
-        background: #0d0d0d;
-        border: 1px solid #2a2a2a;
-        color: #d4d4d4;
+      }
+      .service-pill {
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: rgba(0,0,0,0.55);
+        border: 1px solid rgba(255,255,255,0.18);
+        color: #f0f0f0;
         font-size: 14px;
+        font-weight: 700;
       }
-      @media (max-width: 700px) {
-        .grid, .actions {
-          grid-template-columns: 1fr;
-        }
-        .logo { font-size: 36px; }
-        .hero h1 { font-size: 28px; }
-        .card { padding: 22px; }
+      .hero-card {
+        background: rgba(9,9,9,0.84);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 24px;
+        padding: 24px;
+        box-shadow: 0 20px 60px rgba(0,0,0,.35);
+        backdrop-filter: blur(4px);
       }
-    .services {
+      .hero-card h3 {
+        margin: 0 0 10px;
+        font-size: 24px;
+      }
+      .hero-card p {
+        font-size: 15px;
+        color: #dfdfdf;
+        line-height: 1.7;
+      }
+      .quick-list {
+        margin: 18px 0 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 12px;
+      }
+      .quick-list li {
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 14px;
+        padding: 14px;
+        color: #ededed;
+      }
+      .section {
+        padding: 68px 0;
+      }
+      .section-header {
+        max-width: 760px;
+        margin-bottom: 28px;
+      }
+      .section-header h2 {
+        margin: 0 0 10px;
+        font-size: 38px;
+      }
+      .section-header p {
+        margin: 0;
+        color: #c6c6c6;
+        line-height: 1.7;
+        font-size: 17px;
+      }
+      .services-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 16px;
@@ -176,146 +218,387 @@
         font-size: 15px;
         line-height: 1.6;
       }
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+      .gallery-card {
+        background: #121212;
+        border: 1px solid #242424;
+        border-radius: 22px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,.22);
+      }
+      .gallery-card img {
+        width: 100%;
+        height: 280px;
+        object-fit: cover;
+        display: block;
+      }
+      .gallery-copy {
+        padding: 16px;
+      }
+      .gallery-copy h3 {
+        margin: 0 0 6px;
+        font-size: 20px;
+      }
+      .gallery-copy p {
+        margin: 0;
+        color: #c9c9c9;
+        font-size: 15px;
+        line-height: 1.6;
+      }
+      .contact-wrap {
+        display: grid;
+        grid-template-columns: .95fr 1.05fr;
+        gap: 24px;
+      }
+      .contact-card,
+      .form-card {
+        background: #111;
+        border: 1px solid #242424;
+        border-radius: 22px;
+        padding: 24px;
+      }
+      .contact-card h3,
+      .form-card h3 {
+        margin: 0 0 10px;
+        font-size: 28px;
+      }
+      .contact-card p,
+      .form-card p {
+        margin: 0 0 18px;
+        color: #cbcbcb;
+        line-height: 1.7;
+      }
+      .contact-list {
+        display: grid;
+        gap: 12px;
+      }
+      .contact-item {
+        padding: 14px 16px;
+        background: #0b0b0b;
+        border: 1px solid #232323;
+        border-radius: 14px;
+      }
+      .contact-item strong {
+        display: block;
+        margin-bottom: 4px;
+      }
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .field.full { grid-column: 1 / -1; }
+      label {
+        font-size: 14px;
+        color: #d6d6d6;
+      }
+      input, textarea {
+        width: 100%;
+        border: 1px solid #353535;
+        background: #0b0b0b;
+        color: white;
+        border-radius: 12px;
+        padding: 14px 16px;
+        font-size: 16px;
+        outline: none;
+      }
+      textarea { min-height: 130px; resize: vertical; }
+      input:focus, textarea:focus { border-color: #818181; }
+      .form-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 18px;
+      }
+      .notice {
+        margin-top: 14px;
+        font-size: 13px;
+        color: #9f9f9f;
+      }
+      .footer {
+        border-top: 1px solid #1f1f1f;
+        padding: 26px 0 40px;
+        color: #9ca3af;
+        font-size: 14px;
+      }
+      .footer-inner {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
 
-      @media (max-width: 900px) {
-        .services { grid-template-columns: 1fr 1fr; }
+      @media (max-width: 1050px) {
+        .hero-grid,
+        .contact-wrap,
+        .services-grid { grid-template-columns: 1fr 1fr; }
       }
-      @media (max-width: 600px) {
-        .services { grid-template-columns: 1fr; }
+      @media (max-width: 860px) {
+        .hero { min-height: auto; padding: 54px 0; }
+        .hero-grid,
+        .contact-wrap,
+        .services-grid,
+        .gallery,
+        .form-grid { grid-template-columns: 1fr; }
+        .hero h1 { font-size: 42px; }
+        .gallery-card img { height: 240px; }
+        .hero-bg {
+          background-image:
+            linear-gradient(rgba(0,0,0,0.62), rgba(0,0,0,0.8)),
+            url('/mnt/data/seal.jpg');
+          background-size: cover, cover;
+          background-position: center, center;
+        }
       }
-</style>
+      @media (max-width: 560px) {
+        .topbar-inner { min-height: 64px; }
+        .brand { font-size: 22px; }
+        .hero h1 { font-size: 34px; }
+        .btn { width: 100%; }
+        .top-actions { width: 100%; }
+      }
+    </style>
   </head>
   <body>
-    <div class="wrap">
-      <div class="card">
-        <div class="logo">🖤 MAKE IT BLACK</div>
-        <div class="sub">Sealcoating & Paving LLC • Northwest Indiana</div>
-
-        <div class="hero">
-          <h1>Turn your faded driveway into a fresh black finish.</h1>
-          <p>
-            Residential and commercial sealcoating, crack filling, parking lots, and paving work.
-            Fast estimates. Clean work. Strong curb appeal.
-          </p>
-          <div class="badges">
-            <div class="badge">Free Quotes</div>
-            <div class="badge">Residential & Commercial</div>
-            <div class="badge">Fast Turnaround</div>
-            <div class="badge">Lake County & NWI</div>
-          </div>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="brand">
+          MAKE IT BLACK
+          <small>Sealcoating & Paving LLC</small>
         </div>
-
-        <form id="leadForm" class="grid">
-          <div class="field">
-            <label for="name">Name</label>
-            <input id="name" name="name" placeholder="Your name" required />
-          </div>
-
-          <div class="field">
-            <label for="phone">Phone Number</label>
-            <input id="phone" name="phone" placeholder="Your phone number" required />
-          </div>
-
-          <div class="field full">
-            <label for="address">Property Address</label>
-            <input id="address" name="address" placeholder="Street address for the quote" />
-          </div>
-
-          <div class="field full">
-            <label for="details">Project Details</label>
-            <textarea id="details" name="details" placeholder="Tell us about the driveway, parking lot, cracks, square footage, or anything else..."></textarea>
-          </div>
-
-          <div class="field full">
-            <div class="actions">
-              <button type="submit" class="btn btn-dark">Submit Free Quote Request</button>
-              <a class="btn btn-call" href="tel:2193645364">Call Now: 219-364-5364</a>
-            </div>
-          </div>
-        </form>
-
-        <div class="quote-box">
-          Serving Gary, Merrillville, Hammond, Crown Point, Griffith, Hobart, Schererville, Cedar Lake, and nearby Northwest Indiana areas.
-        </div>
-
-        <div class="footer">
-          Make It Black Sealcoating & Paving LLC<br />
-          Clean black finish. Better curb appeal. More value.
+        <div class="top-actions">
+          <a class="btn btn-dark" href="#services">Our Services</a>
+          <a class="btn btn-light" href="#quote">Free Quote</a>
+          <a class="btn btn-green" href="tel:2193645364">Call 219-364-5364</a>
         </div>
       </div>
-    </div>
+    </header>
 
-    <script>
-      document.getElementById('leadForm').addEventListener('submit', function (e) {
-        e.preventDefault();
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <div class="container">
+          <div class="hero-grid">
+            <div>
+              <div class="eyebrow">Northwest Indiana Asphalt Specialists</div>
+              <h1>Professional asphalt work that looks clean, sharp, and built to last.</h1>
+              <p>
+                From sealcoating and crack filling to line striping, stone delivery, and full tear out and replacement,
+                Make It Black helps residential and commercial properties look better and stay protected.
+              </p>
 
-        const name = document.getElementById('name').value.trim();
-        const phone = document.getElementById('phone').value.trim();
-        const address = document.getElementById('address').value.trim();
-        const details = document.getElementById('details').value.trim();
+              <div class="services-strip">
+                <div class="service-pill">Sealcoating</div>
+                <div class="service-pill">Crack Filling</div>
+                <div class="service-pill">Line Striping</div>
+                <div class="service-pill">Stone & Gravel Delivery</div>
+                <div class="service-pill">Tear Out & Replacement</div>
+              </div>
 
-        const subject = 'New Sealcoating Lead - Make It Black';
-        const body = [
-          'Name: ' + name,
-          'Phone: ' + phone,
-          'Address: ' + address,
-          'Details: ' + details
-        ].join('\n');
+              <div class="hero-actions">
+                <a class="btn btn-light" href="#quote">Get a Free Quote</a>
+                <a class="btn btn-green" href="tel:2193645364">Call Now</a>
+              </div>
+            </div>
 
-        window.location.href = 'mailto:makeitblack219@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-      });
-    </script>
-  
-    <section class="section">
-      <div class="container">
-        <div class="section-header">
-          <h2>Our Services</h2>
-          <p>Full-service asphalt solutions for residential and commercial properties.</p>
-        </div>
-
-        <div class="services">
-          <div class="service-card">
-            <h3>Sealcoating</h3>
-            <p>Protect and restore your driveway or lot with a deep black finish.</p>
-          </div>
-
-          <div class="service-card">
-            <h3>Crack Filling</h3>
-            <p>Stop damage early and extend the life of your asphalt surface.</p>
-          </div>
-
-          <div class="service-card">
-            <h3>Line Striping</h3>
-            <p>Fresh, clean parking lot lines for safety and professional appearance.</p>
-          </div>
-
-          <div class="service-card">
-            <h3>Stone & Gravel Delivery</h3>
-            <p>Fast delivery for driveways, lots, and base prep projects.</p>
-          </div>
-
-          <div class="service-card">
-            <h3>Asphalt Tear Out & Replacement</h3>
-            <p>Full removal and new asphalt installation done right the first time.</p>
-          </div>
-
-          <div class="service-card">
-            <h3>Parking Lots</h3>
-            <p>Commercial sealing, striping, and maintenance packages.</p>
-          </div>
-
-          <div class="service-card">
-            <h3>Driveways</h3>
-            <p>Residential driveways cleaned, sealed, and restored.</p>
-          </div>
-
-          <div class="service-card">
-            <h3>Maintenance Plans</h3>
-            <p>Keep your asphalt looking new year after year.</p>
+            <div class="hero-card">
+              <h3>Why customers choose Make It Black</h3>
+              <p>Fast response, honest work, strong curb appeal, and services that cover more than just sealcoating.</p>
+              <ul class="quick-list">
+                <li><strong>Residential & Commercial</strong><br />Driveways, parking lots, private roads, and more.</li>
+                <li><strong>More than sealing</strong><br />We also handle striping, gravel delivery, and full replacement work.</li>
+                <li><strong>Built for Northwest Indiana</strong><br />Serving Gary and surrounding Lake County areas.</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-header">
+          <h2>Our Services</h2>
+          <p>Complete asphalt and surface improvement services for homes, businesses, and property managers.</p>
+        </div>
+        <div class="services-grid">
+          <div class="service-card">
+            <h3>Sealcoating</h3>
+            <p>Restore asphalt with a fresh black finish that improves appearance and helps protect the surface.</p>
+          </div>
+          <div class="service-card">
+            <h3>Crack Filling</h3>
+            <p>Seal cracks early to reduce water damage and extend the life of your asphalt.</p>
+          </div>
+          <div class="service-card">
+            <h3>Line Striping</h3>
+            <p>Clean, professional parking lot striping for safety, organization, and curb appeal.</p>
+          </div>
+          <div class="service-card">
+            <h3>Stone & Gravel Delivery</h3>
+            <p>Reliable delivery for driveway stone, lot prep, base material, and general site needs.</p>
+          </div>
+          <div class="service-card">
+            <h3>Asphalt Tear Out & Replacement</h3>
+            <p>Full removal and replacement for damaged asphalt that needs a fresh start.</p>
+          </div>
+          <div class="service-card">
+            <h3>Driveways</h3>
+            <p>Residential driveways cleaned up, refreshed, and made to stand out.</p>
+          </div>
+          <div class="service-card">
+            <h3>Parking Lots</h3>
+            <p>Commercial lot maintenance, sealing, striping, and surface improvement solutions.</p>
+          </div>
+          <div class="service-card">
+            <h3>Property Maintenance</h3>
+            <p>Ongoing service for owners and managers who want their pavement to stay sharp year-round.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Recent Work</h2>
+          <p>Real finished surfaces, fresh black top, and professional-looking results.</p>
+        </div>
+        <div class="gallery">
+          <div class="gallery-card">
+            <img src="/mnt/data/seal.jpg" alt="Freshly sealed residential driveway" />
+            <div class="gallery-copy">
+              <h3>Residential Driveway</h3>
+              <p>Smooth finish, clean edges, and a fresh black look that upgrades curb appeal instantly.</p>
+            </div>
+          </div>
+          <div class="gallery-card">
+            <img src="/mnt/data/seal2.jpg" alt="Sealcoating in progress on residential asphalt" />
+            <div class="gallery-copy">
+              <h3>Professional Application</h3>
+              <p>Careful layout and coverage for a consistent finish across the full surface.</p>
+            </div>
+          </div>
+          <div class="gallery-card">
+            <img src="/mnt/data/seal3.jpg" alt="Freshly sealed commercial parking lot" />
+            <div class="gallery-copy">
+              <h3>Commercial Parking Lot</h3>
+              <p>Great for businesses that want a sharper look and better first impression.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="quote">
+      <div class="container">
+        <div class="contact-wrap">
+          <div class="contact-card">
+            <h3>Get your free quote</h3>
+            <p>Send your info and we’ll make it easy to get in touch. Call, text, or copy the message and email it directly.</p>
+            <div class="contact-list">
+              <div class="contact-item">
+                <strong>Phone</strong>
+                219-364-5364
+              </div>
+              <div class="contact-item">
+                <strong>Email</strong>
+                makeitblack219@gmail.com
+              </div>
+              <div class="contact-item">
+                <strong>Service Area</strong>
+                Gary, Merrillville, Hammond, Crown Point, Griffith, Hobart, Schererville, Cedar Lake, and nearby Northwest Indiana areas.
+              </div>
+            </div>
+          </div>
+
+          <div class="form-card">
+            <h3>Request a quote</h3>
+            <p>Fill this out, then choose email or text. The site will open a ready-made message with your lead details.</p>
+            <form id="leadForm">
+              <div class="form-grid">
+                <div class="field">
+                  <label for="name">Name</label>
+                  <input id="name" name="name" placeholder="Your name" required />
+                </div>
+                <div class="field">
+                  <label for="phone">Phone Number</label>
+                  <input id="phone" name="phone" placeholder="Your phone number" required />
+                </div>
+                <div class="field full">
+                  <label for="address">Property Address</label>
+                  <input id="address" name="address" placeholder="Street address for the quote" />
+                </div>
+                <div class="field full">
+                  <label for="details">Project Details</label>
+                  <textarea id="details" name="details" placeholder="Tell us about the driveway, parking lot, cracks, square footage, striping, gravel, or replacement work..."></textarea>
+                </div>
+              </div>
+              <div class="form-actions">
+                <button type="button" class="btn btn-light" onclick="sendLead('email')">Send by Email</button>
+                <button type="button" class="btn btn-dark" onclick="sendLead('text')">Send by Text</button>
+                <a class="btn btn-green" href="tel:2193645364">Call Now</a>
+              </div>
+              <div class="notice">If email does not open on a visitor’s device, the text option usually works better.</div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <div>Make It Black Sealcoating & Paving LLC</div>
+        <div>Clean black finish. Better curb appeal. More value.</div>
+      </div>
+    </footer>
+
+    <script>
+      function getLeadBody() {
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const address = document.getElementById('address').value.trim();
+        const details = document.getElementById('details').value.trim();
+
+        return [
+          'New Quote Request - Make It Black',
+          '',
+          'Name: ' + name,
+          'Phone: ' + phone,
+          'Address: ' + address,
+          'Details: ' + details
+        ].join('\n');
+      }
+
+      function sendLead(type) {
+        const form = document.getElementById('leadForm');
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        if (!name || !phone) {
+          form.reportValidity();
+          return;
+        }
+
+        const subject = 'New Quote Request - Make It Black';
+        const body = getLeadBody();
+
+        if (type === 'email') {
+          const emailLink = 'https://mail.google.com/mail/?view=cm&fs=1&to=makeitblack219@gmail.com&su=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+          window.open(emailLink, '_blank');
+        } else {
+          window.location.href = 'sms:2193645364?body=' + encodeURIComponent(body);
+        }
+      }
+    </script>
   </body>
 </html>
+backgrou
