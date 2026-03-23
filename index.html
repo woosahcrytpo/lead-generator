@@ -155,7 +155,35 @@
         .hero h1 { font-size: 28px; }
         .card { padding: 22px; }
       }
-    </style>
+    .services {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+      }
+      .service-card {
+        background: #111;
+        border: 1px solid #242424;
+        border-radius: 18px;
+        padding: 22px;
+      }
+      .service-card h3 {
+        margin: 0 0 10px;
+        font-size: 20px;
+      }
+      .service-card p {
+        margin: 0;
+        color: #c9c9c9;
+        font-size: 15px;
+        line-height: 1.6;
+      }
+
+      @media (max-width: 900px) {
+        .services { grid-template-columns: 1fr 1fr; }
+      }
+      @media (max-width: 600px) {
+        .services { grid-template-columns: 1fr; }
+      }
+</style>
   </head>
   <body>
     <div class="wrap">
@@ -168,13 +196,12 @@
           <p>
             Residential and commercial sealcoating, crack filling, parking lots, and paving work.
             Fast estimates. Clean work. Strong curb appeal.
-            "IF YOU DONT PROTECT IT, It's YOUR OWN ASPHALT"
           </p>
           <div class="badges">
             <div class="badge">Free Quotes</div>
             <div class="badge">Residential & Commercial</div>
             <div class="badge">Fast Turnaround</div>
-            <div class="badge">SERVING ALL OF NWI</div>
+            <div class="badge">Lake County & NWI</div>
           </div>
         </div>
 
@@ -208,7 +235,7 @@
         </form>
 
         <div class="quote-box">
-          Serving Gary, Merrillville, Hammond, Crown Point, Griffith, Hobart, Schererville, Cedar Lake, and any Northwest Indiana areas.
+          Serving Gary, Merrillville, Hammond, Crown Point, Griffith, Hobart, Schererville, Cedar Lake, and nearby Northwest Indiana areas.
         </div>
 
         <div class="footer">
@@ -235,8 +262,60 @@
           'Details: ' + details
         ].join('\n');
 
-        window.location.href = 'mailto:makeitblack219@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+        window.location.href = 'mailto:youremail@example.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
       });
     </script>
+  
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Our Services</h2>
+          <p>Full-service asphalt solutions for residential and commercial properties.</p>
+        </div>
+
+        <div class="services">
+          <div class="service-card">
+            <h3>Sealcoating</h3>
+            <p>Protect and restore your driveway or lot with a deep black finish.</p>
+          </div>
+
+          <div class="service-card">
+            <h3>Crack Filling</h3>
+            <p>Stop damage early and extend the life of your asphalt surface.</p>
+          </div>
+
+          <div class="service-card">
+            <h3>Line Striping</h3>
+            <p>Fresh, clean parking lot lines for safety and professional appearance.</p>
+          </div>
+
+          <div class="service-card">
+            <h3>Stone & Gravel Delivery</h3>
+            <p>Fast delivery for driveways, lots, and base prep projects.</p>
+          </div>
+
+          <div class="service-card">
+            <h3>Asphalt Tear Out & Replacement</h3>
+            <p>Full removal and new asphalt installation done right the first time.</p>
+          </div>
+
+          <div class="service-card">
+            <h3>Parking Lots</h3>
+            <p>Commercial sealing, striping, and maintenance packages.</p>
+          </div>
+
+          <div class="service-card">
+            <h3>Driveways</h3>
+            <p>Residential driveways cleaned, sealed, and restored.</p>
+          </div>
+
+          <div class="service-card">
+            <h3>Maintenance Plans</h3>
+            <p>Keep your asphalt looking new year after year.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </body>
 </html>
