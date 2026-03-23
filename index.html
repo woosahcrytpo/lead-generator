@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Make It Black Sealcoating & Paving LLC</title>
+    <style>
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: linear-gradient(180deg, #050505 0%, #111111 100%);
+        color: white;
+      }
+      .wrap {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+      }
+      .card {
+        width: 100%;
+        max-width: 720px;
+        background: #141414;
+        border: 1px solid #2d2d2d;
+        border-radius: 20px;
+        padding: 32px;
+        box-shadow: 0 20px 60px rgba(0,0,0,.35);
+      }
+      .logo {
+        text-align: center;
+        font-size: 44px;
+        font-weight: 900;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+      }
+      .sub {
+        text-align: center;
+        color: #d1d1d1;
+        font-size: 18px;
+        margin-bottom: 30px;
+      }
+      .hero {
+        background: linear-gradient(135deg, #1e1e1e, #0d0d0d);
+        border: 1px solid #2a2a2a;
+        border-radius: 18px;
+        padding: 24px;
+        margin-bottom: 24px;
+      }
+      .hero h1 {
+        margin: 0 0 12px 0;
+        font-size: 34px;
+        line-height: 1.1;
+      }
+      .hero p {
+        margin: 0;
+        color: #cfcfcf;
+        line-height: 1.5;
+      }
+      .badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 18px;
+      }
+      .badge {
+        background: #000;
+        border: 1px solid #333;
+        border-radius: 999px;
+        padding: 10px 14px;
+        font-size: 14px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .field.full {
+        grid-column: 1 / -1;
+      }
+      label {
+        font-size: 14px;
+        color: #d6d6d6;
+      }
+      input, textarea {
+        width: 100%;
+        border: 1px solid #353535;
+        background: #0b0b0b;
+        color: white;
+        border-radius: 12px;
+        padding: 14px 16px;
+        font-size: 16px;
+        outline: none;
+      }
+      textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+      input:focus, textarea:focus {
+        border-color: #6b7280;
+      }
+      .actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-top: 18px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        border-radius: 14px;
+        padding: 16px 18px;
+        font-size: 17px;
+        font-weight: 800;
+      }
+      .btn-dark {
+        background: white;
+        color: black;
+      }
+      .btn-call {
+        background: #16a34a;
+        color: white;
+      }
+      .footer {
+        text-align: center;
+        margin-top: 24px;
+        color: #9ca3af;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+      .quote-box {
+        margin-top: 24px;
+        padding: 18px;
+        border-radius: 16px;
+        background: #0d0d0d;
+        border: 1px solid #2a2a2a;
+        color: #d4d4d4;
+        font-size: 14px;
+      }
+      @media (max-width: 700px) {
+        .grid, .actions {
+          grid-template-columns: 1fr;
+        }
+        .logo { font-size: 36px; }
+        .hero h1 { font-size: 28px; }
+        .card { padding: 22px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="card">
+        <div class="logo">🖤 MAKE IT BLACK</div>
+        <div class="sub">Sealcoating & Paving LLC • Northwest Indiana</div>
+
+        <div class="hero">
+          <h1>Turn your faded driveway into a fresh black finish.</h1>
+          <p>
+            Residential and commercial sealcoating, crack filling, parking lots, and paving work.
+            Fast estimates. Clean work. Strong curb appeal.
+            "IF YOU DONT PROTECT IT, It's YOUR OWN ASPHALT"
+          </p>
+          <div class="badges">
+            <div class="badge">Free Quotes</div>
+            <div class="badge">Residential & Commercial</div>
+            <div class="badge">Fast Turnaround</div>
+            <div class="badge">SERVING ALL OF NWI</div>
+          </div>
+        </div>
+
+        <form id="leadForm" class="grid">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" placeholder="Your name" required />
+          </div>
+
+          <div class="field">
+            <label for="phone">Phone Number</label>
+            <input id="phone" name="phone" placeholder="Your phone number" required />
+          </div>
+
+          <div class="field full">
+            <label for="address">Property Address</label>
+            <input id="address" name="address" placeholder="Street address for the quote" />
+          </div>
+
+          <div class="field full">
+            <label for="details">Project Details</label>
+            <textarea id="details" name="details" placeholder="Tell us about the driveway, parking lot, cracks, square footage, or anything else..."></textarea>
+          </div>
+
+          <div class="field full">
+            <div class="actions">
+              <button type="submit" class="btn btn-dark">Submit Free Quote Request</button>
+              <a class="btn btn-call" href="tel:2193645364">Call Now: 219-364-5364</a>
+            </div>
+          </div>
+        </form>
+
+        <div class="quote-box">
+          Serving Gary, Merrillville, Hammond, Crown Point, Griffith, Hobart, Schererville, Cedar Lake, and any Northwest Indiana areas.
+        </div>
+
+        <div class="footer">
+          Make It Black Sealcoating & Paving LLC<br />
+          Clean black finish. Better curb appeal. More value.
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById('leadForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const address = document.getElementById('address').value.trim();
+        const details = document.getElementById('details').value.trim();
+
+        const subject = 'New Sealcoating Lead - Make It Black';
+        const body = [
+          'Name: ' + name,
+          'Phone: ' + phone,
+          'Address: ' + address,
+          'Details: ' + details
+        ].join('\n');
+
+        window.location.href = 'mailto:makeitblack219@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      });
+    </script>
+  </body>
+</html>
